@@ -1,0 +1,42 @@
+@media (max-width: 1200px)
+    .container
+        width: 800px
+    .benefits
+        &__items
+            .item
+                width: 220px
+@media (max-width: 991px)
+    .container
+        width: 690px
+@media (max-width: 767px)
+    .container
+        width: 90%
+    .header
+        &__logo
+                width: 30%
+    .benefits
+        &__items
+            flex-direction: column
+            align-items: center
+            gap: 20px
+            .item
+                width: 320px
+@media (max-width: 576px)
+    .header
+        // &__logo
+        //     width: 170px
+        &__official
+            font-size: 12px
+            span
+                font-size: 14px
+        &__phone
+            font-size: 15px
+        .button
+            width: 130px
+            height: 32px
+            font-size: 10px
+    .promo
+        &__header
+            font-size: 36px
+        &__subheader
+            font-size: 20px
