@@ -4,6 +4,13 @@
         position: relative
         width: 750px
         margin: 0 auto
+        div
+            display: flex
+            align-items: center
+            width: 100%
+            img
+                width: 100%
+                height: auto
     .slick-prev, .slick-next
         position: absolute
         top: 50%
@@ -17,3 +24,21 @@
     .slick-next
         left: auto
         right: -66px
+    .slick-dots
+        list-style-type: none
+        display: flex
+        justify-content: center
+        gap: 10px
+        li
+            &.slick-active
+                button
+                    background-color: $accent_color
+                    color: $accent_color
+            button
+                border: none
+                width: 30px
+                height: 30px
+                border-radius: 50%
+                background-color: #e8e8e8
+                color: #e8e8e8
+                transition: 0.3s all
