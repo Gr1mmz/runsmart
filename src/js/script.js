@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    //Carousel
+
     $(".carousel__wrapper").slick({
         speed: 1200,
         autoplay: true,
@@ -17,6 +19,8 @@ $(document).ready(function () {
             },
         ],
     });
+
+    // Tabs
 
     $("ul.catalog__tabs").on(
         "click",
@@ -50,4 +54,60 @@ $(document).ready(function () {
 
     toggleContent(".catalog-item__link");
     toggleContent(".catalog-item__back");
+
+    // Modal
+
+    $("[data-modal=consultation]").on("click", function () {
+        $(".overlay, #consultation").fadeIn();
+    });
+    $(".modal__close").on("click", function () {
+        $(".overlay, #consultation, #order, #thanks").fadeOut();
+    });
+    $(".button_mini").each(function (i) {
+        $(this).on("click", function () {
+            $("#order .modal__descr").text(
+                $(".catalog-item__subtitle").eq(i).text()
+            );
+            $(".overlay, #order").fadeIn();
+        });
+    });
+
+    // Validate forms
+
+    function validateForm(form) {
+        $(form).validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 2,
+                },
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true,
+                },
+            },
+            messages: {
+                name: {
+                    required: "Пожалуйста, введите свое имя",
+                    minlength: jQuery.validator.format(
+                        "Имя должно содержать не менее {0} символов"
+                    ),
+                },
+                phone: "Пожалуйста, введите номер телефона",
+                email: {
+                    required: "Пожалуйста, введите адрес электронной почты",
+                    email: "Ваш адрес электронной почты должен быть в виде name@domain.ru",
+                },
+            },
+        });
+    }
+
+    validateForm("#consultation-form");
+    validateForm("#consultation form");
+    validateForm("#order form");
+
+    // Masked inputs
+
+    $("input[name=phone]").mask("+7 (999) 999-99-99");
 });
