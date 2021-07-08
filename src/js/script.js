@@ -63,6 +63,11 @@ $(document).ready(function () {
     $(".modal__close").on("click", function () {
         $(".overlay, #consultation, #order, #thanks").fadeOut();
     });
+    $(window).on("click", function (e) {
+        if (e.target.classList.contains("overlay")) {
+            $(".overlay, #consultation, #thanks, #order").fadeOut();
+        }
+    });
     $(".button_mini").each(function (i) {
         $(this).on("click", function () {
             $("#order .modal__descr").text(
@@ -110,4 +115,37 @@ $(document).ready(function () {
     // Masked inputs
 
     $("input[name=phone]").mask("+7 (999) 999-99-99");
+
+    // Mailer
+
+    $("form").submit(function (e) {
+        e.preventDefault();
+        if ($(this).valid()) {
+            $.ajax({
+                type: "POST",
+                url: "mailer/smart.php",
+                data: $(this).serialize(),
+            }).done(function () {
+                $(this).find("input").val("");
+                $("#consultation, #order").fadeOut();
+                $(".overlay, #thanks").fadeIn();
+                $("form").trigger("reset");
+            });
+        }
+        return false;
+    });
+
+    // Scroll
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 1200) {
+            $(".pageup").fadeIn();
+        } else {
+            $(".pageup").fadeOut();
+        }
+    });
+
+    //Animations
+
+    new WOW().init();
 });

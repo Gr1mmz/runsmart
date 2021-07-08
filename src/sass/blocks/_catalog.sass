@@ -101,6 +101,7 @@
             line-height: 20px
             color: #050505
         &__wrapper
+            position: relative
             display: flex
             width: calc(200% + 40px)
         &__content
@@ -126,22 +127,25 @@
             &_active
                 transform: translateX(-100%)
                 margin-left: 0px
-            li
-                width: 100%
-                position: relative
-                color: #555
-                font-size: 14px
-                font-weight: 400
-                line-height: 21px
-                margin-bottom: 10px
-                &::before
-                    position: absolute
-                    content: ""
-                    width: 5px
-                    height: 5px
-                    background-color: $accent_color
-                    left: -14px
-                    top: 8px
+            ul
+                margin: 0
+                padding: 0
+                li
+                    width: 100%
+                    position: relative
+                    color: #555
+                    font-size: 14px
+                    font-weight: 400
+                    line-height: 21px
+                    margin-bottom: 10px
+                    &::before
+                        position: absolute
+                        content: ""
+                        width: 5px
+                        height: 5px
+                        background-color: $accent_color
+                        left: -14px
+                        top: 8px
         &__back
             position: absolute
             bottom: 0
